@@ -75,12 +75,12 @@ var Realtime = function(orgId, api_key, auth_token) {
 		subscribeTopic = "iot-2/type/" + tokens[2] + "/id/" + tokens[3] + "/evt/+/fmt/json";
 		client.subscribe(subscribeTopic,subscribeOptions);
 
-		if(!firstMessage) {
-			//clear prev graphs
-			$('#chart').empty();
-			$('#timeline').empty();
-			$('#legend').empty();
-		}
+		console.log("first   :: "+firstMessage);
+
+		//clear prev graphs
+		$('#chart').empty();
+		$('#timeline').empty();
+		$('#legend').empty();
 		firstMessage = true;
 	}
 

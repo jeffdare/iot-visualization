@@ -64,6 +64,20 @@ body {
 	line-height: 30%;
 	margin-left: 10px;
 }
+.iotdashboardtext {
+	font-family: Arial,sans-serif;
+	font-size: 20px;
+	text-align: center;
+	color: #58595b;
+	margin-top: 10px;
+	margin-left: 80px;
+}
+.iotimages {
+	width:304px;
+	height:228px;
+	margin-top: 60px;
+	margin-left: 60px;
+}
 .logintext {
 	font-family: Arial,sans-serif;
 	color: #58595b;

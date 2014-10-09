@@ -112,10 +112,16 @@ block content
     
   #chart_container
     #chart
+      .iotdashboardtext All devices currently in your organization are available in the Devices Dropdown.
+      br
+      .iotdashboardtext Select one to start visualizing device data.
+      img.iotimages(src='images/quickstartThing.svg', alt='Thing',align="middle")
+      img.iotimages(src='images/quickstartChart.svg', alt='Chart',align="middle")
     #timeline
     #preview
   
   script(type='text/javascript', src='js/mqttws31.js')
   script(type='text/javascript', src='js/realtime.js')
   script(type='text/javascript', src='js/realtimeGraph.js')
+  script(type='text/javascript', src='js/historian.js')
   script(type='text/javascript', src='js/uicontroller.js')
