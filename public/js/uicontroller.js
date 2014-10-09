@@ -7,8 +7,6 @@ var api_key ="";
 var auth_token = "";
 var devices = [];
 
-
-
 // Get the OrgId and OrgName
 $.ajax
 ({
