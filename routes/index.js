@@ -21,9 +21,9 @@ router.use(function(req, res, next) {
 					if (env['user-provided'][i].credentials.iotCredentialsIdentifier)
 					{
 						//found an IoT service so bind api_key and api_token session variables
-						console.log("came here"+env['user-provided'][i].credentials.apiToken);
 						req.session.api_key=env['user-provided'][i].credentials.apiKey;
 						req.session.auth_token=env['user-provided'][i].credentials.apiToken;
+						req.session.isBluemix= true;
 						res.redirect("/dashboard");
 					}
 				}

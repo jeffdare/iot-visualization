@@ -12,7 +12,7 @@ var Realtime = function(orgId, api_key, auth_token) {
 
 	this.initialize = function(){
 
-		client = new Messaging.Client(hostname, 1883,clientId);
+		client = new Messaging.Client(hostname, 8883,clientId);
 
 		// Initialize the Realtime Graph
 		var rtGraph = new RealtimeGraph();
@@ -36,12 +36,12 @@ var Realtime = function(orgId, api_key, auth_token) {
 
 		var connectOptions = new Object();
 		connectOptions.keepAliveInterval = 3600;
-		connectOptions.useSSL=false;
+		connectOptions.useSSL=true;
 		connectOptions.userName=api_key;
 		connectOptions.password=auth_token;
 
 		connectOptions.onSuccess = function() {
-			console.log("MQTT connected at " + Date.now());
+			console.log("MQTT connected to host: "+client.host+" port : "+client.port+" at " + Date.now());
 		}
 
 		connectOptions.onFailure = function(e) {

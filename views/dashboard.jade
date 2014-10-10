@@ -21,8 +21,8 @@ block content
   //script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
   script
     |$(function() {
-    |$( "#historicStarts" ).datetimepicker({ format: 'unixtime',defaultDate:new Date()});
-    |$( "#historicEnds" ).datetimepicker({ format: 'unixtime',defaultDate:new Date()});
+    |$( "#historicStarts" ).datetimepicker({ maxDate:new Date()});
+    |$( "#historicEnds" ).datetimepicker({ maxDate:new Date()});
     |$( "#historicTopRange").spinner({min : 0, max : 100, step : 1})
     |.on('input', function () {
     |var val = this.value,
