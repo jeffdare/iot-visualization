@@ -21,7 +21,7 @@ IBM IOT Cloud.
 
 > Please refer to the [recipe] for running the application.
 
-** Visualization in the application: **
+### Visualization in the application: 
 
 
 > This page uses the  [Rickshaw] charting library to visualize real time and historical data.
@@ -73,7 +73,7 @@ IBM IOT Cloud.
 
 >> 
 
-> This defines the time fixture((e.g. year, month, day, hour) and the formatting of each) for the x-axis  
+> This defines the time fixture(e.g. year, month, day, hour) and the formatting of each) for the x-axis. 
 
         this.xAxis = new Rickshaw.Graph.Axis.Time( {
           graph: this.graph,
@@ -83,9 +83,7 @@ IBM IOT Cloud.
 
 >> 
 
-> This defines the number formatting for y axis
-
-    this.xAxis.render();
+> This defines the number formatting for y axis.
 
     this.yAxis = new Rickshaw.Graph.Axis.Y( {
       graph: this.graph,
@@ -93,15 +91,28 @@ IBM IOT Cloud.
       ticksTreatment: this.ticksTreatment
     } );
 
-    this.yAxis.render();
+>> 
+
+> This function gets called from historian.js and create the array which is used to plot the graph.
+
+        this.displayHistChart = function(device,data)
+
+
+> *historian.js* : This file intializes the graph and makes REST API calls to get the historian data. 
 
 >> 
 
+        this.initialize = function() {
+        historianGraph = new HistorianGraph();
+      }
+>> 
 
+> The function  this.plotHistoricGraph handles the ui control selections and 
+make the REST call to get the historical data
 
-
-> historian.js : This file intializes the graph and makes REST API calls to get the historian data. 
-
+        this.plotHistoricGraph 
+        
+> You can download the zip and use the above guidelines to customize the graphs to change the visualization.
 
 [node.js]:http://nodejs.org
 [jQuery]:http://jquery.com
