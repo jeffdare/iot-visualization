@@ -28,7 +28,9 @@ IBM IOT Cloud.
 
 >> 
 
-> *Historical data*: The components for the historical data visualization are placed in the files historian.js and historianGraph.js in this folder.
+> ####Historical data: 
+
+>   The components for the historical data visualization are placed in the files historian.js and historianGraph.js in this folder.
 
         iot-visualization\public\js\historian\
     
@@ -111,8 +113,30 @@ IBM IOT Cloud.
 make the REST call to get the historical data
 
         this.plotHistoricGraph 
-        
-> You can download the zip and use the above guidelines to customize the graphs to change the visualization.
+
+
+> ####Realtime data: 
+
+>   The components for the realtime data visualization are placed in the files historian.js and historianGraph.js in this folder.
+
+        iot-visualization\public\js\realtime\
+    
+        \realtime.js
+    
+        \realtimeGraph.js
+
+
+>>  
+
+> *realtimeGraph.js*: This file contains the graph and it's related functions.This is written in the same style as historianGraph.js above.So you can follow the guidelines for historianGraph.js to customize the code.
+
+>> 
+
+> *historian.js* : This file intializes the graph and subscribes to the mqtt topics to get realtime device data from IBM IOT cloud.
+
+>> 
+
+> You can download the iot-visualization project zip and use the above guidelines to customize the graphs to change the visualization.
 
 [node.js]:http://nodejs.org
 [jQuery]:http://jquery.com
@@ -120,4 +144,3 @@ make the REST call to get the historical data
 [Rickshaw]:http://code.shutterstock.com/rickshaw/
 [MQTT paho client]:http://www.eclipse.org/paho/clients/js/
 [recipe]:https://developer.ibm.com/iot/recipes/visualize-data/
-
