@@ -70,10 +70,16 @@ $( "#deviceslist" ).change(function() {
 //Toggle historian options when user selects historic/live data radio buttons
 $('#historic').change(function() {
 	$('#historicData').show(500);
+	historian.plotHistoricGraph();
 	isHistorian = true;
 });
 
 $('#realtime').change(function() {
 	$('#historicData').hide(500);
+	realtime.plotRealtimeGraph();
 	isHistorian = false;
+});
+
+$( "#historicTopRange").on( "spinchange", function( event, ui ) {
+	historian.plotHistoricGraph();
 });

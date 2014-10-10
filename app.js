@@ -11,6 +11,16 @@ var index = require('./routes/index');
 
 var app = express();
 
+var http_host = (process.env.VCAP_APP_HOST || '0.0.0.0');
+var http_port = (process.env.VCAP_APP_PORT || 7000);
+
+app.set('port', http_port);
+app.set('host',http_host);
+
+var server = app.listen(app.get('port'), app.get('host'), function() {
+  console.log('Express server listening on ' + server.address().address + ':' + server.address().port);
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -59,6 +69,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
 
 module.exports = app;
