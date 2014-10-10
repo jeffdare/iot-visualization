@@ -80,6 +80,7 @@ $('#realtime').change(function() {
 	isHistorian = false;
 });
 
+//plot historic graph when user changes the spinner
 $( "#historicTopRange").on( "spinchange", function( event, ui ) {
 	historian.plotHistoricGraph();
 });
