@@ -1,3 +1,15 @@
+/*******************************************************************************
+* Copyright (c) 2014 IBM Corporation and other Contributors.
+*
+* All rights reserved. This program and the accompanying materials
+* are made available under the terms of the Eclipse Public License v1.0
+* which accompanies this distribution, and is available at
+* http://www.eclipse.org/legal/epl-v10.html
+*
+* Contributors:
+* IBM - Initial Contribution
+*******************************************************************************/
+
 var subscribeTopic = "";
 
 var Realtime = function(orgId, api_key, auth_token) {
@@ -22,6 +34,7 @@ var Realtime = function(orgId, api_key, auth_token) {
 			var payload = JSON.parse(msg.payloadString);
 			//First message, instantiate the graph  
 		    if (firstMessage) {
+		    	$('#chart').empty();
 		    	firstMessage=false;
 		    	rtGraph.displayChart(null,payload);
 		    } else {
@@ -71,18 +84,23 @@ var Realtime = function(orgId, api_key, auth_token) {
 			console.log("Unsubscribing to " + subscribeTopic);
 			client.unsubscribe(subscribeTopic);
 		}
-		
-		subscribeTopic = "iot-2/type/" + tokens[2] + "/id/" + tokens[3] + "/evt/+/fmt/json";
-		client.subscribe(subscribeTopic,subscribeOptions);
-
-		console.log("first   :: "+firstMessage);
 
 		//clear prev graphs
-		$('#chart').empty();
+		$('#chart').hide(function(){ 
+			$('#chart').empty(); 
+			$('#chart').show();
+			$('#chart').append(imageHTML);
+		});
+		
 		$('#timeline').empty();
 		$('#legend').empty();
 		firstMessage = true;
+
+		subscribeTopic = "iot-2/type/" + tokens[2] + "/id/" + tokens[3] + "/evt/+/fmt/json";
+		client.subscribe(subscribeTopic,subscribeOptions);
 	}
 
 	this.initialize();
+
+	var imageHTML = '<div class="iotdashboardtext">The selected device is not currently sending events to the Internet of Things Founcation</div><br><div class="iotdashboardtext">Select to view historical data or select a different device.</div> <img class="iotimagesMiddle" align="middle" alt="Chart" src="images/IOT_Icons_Thing02.svg">';
 }

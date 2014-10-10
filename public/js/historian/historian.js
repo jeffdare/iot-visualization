@@ -1,3 +1,14 @@
+/*******************************************************************************
+* Copyright (c) 2014 IBM Corporation and other Contributors.
+*
+* All rights reserved. This program and the accompanying materials
+* are made available under the terms of the Eclipse Public License v1.0
+* which accompanies this distribution, and is available at
+* http://www.eclipse.org/legal/epl-v10.html
+*
+* Contributors:
+* IBM - Initial Contribution
+*******************************************************************************/
 
 var Historian  = function () {
 
@@ -42,7 +53,8 @@ var Historian  = function () {
 
 				success: function (data, status, jq){
 
-					$('#chart').empty();
+					//clear prev graphs
+					$('#chart').empty(); 
 					$('#timeline').empty();
 					$('#legend').empty();
 					historianGraph.displayHistChart(null,data);
@@ -56,4 +68,5 @@ var Historian  = function () {
 	}
 
 	this.initialize();
+	var imageHTML = '<div class="iotdashboardtext">The selected device does not have historic events in the Internet of Things Founcation</div><br><div class="iotdashboardtext">Select a different device.</div> <img class="iotimagesMiddle" align="middle" alt="Chart" src="images/IOT_Icons_Thing02.svg">';
 };

@@ -10,19 +10,20 @@ block content
   link(rel='stylesheet', href='css/extensions.css?v=2')
   link(rel='stylesheet', href='http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css')
   link(rel='stylesheet', href='css/jquery.datetimepicker.css')
-  //link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
 
   script(type='text/javascript', src='js/d3/d3.v3.js')
   script(type='text/javascript', src='js/rickshaw/rickshaw.min.js')
   script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
   script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js')
-  script(type='text/javascript', src='js/jquery.datetimepicker.js')
-  script(type='text/javascript',src='js/extensions.js')
-  //script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
+  script(type='text/javascript', src='js/jquery.datetimepicker.min.js')
+  script(type='text/javascript',src='js/rickshaw/extensions.js')
+  
   script
     |$(function() {
-    |$( "#historicStarts" ).datetimepicker({ maxDate:new Date()});
-    |$( "#historicEnds" ).datetimepicker({ maxDate:new Date()});
+    |$( "#historicStarts" ).datetimepicker({ onShow:function( ct ){
+    |     this.setOptions({ maxDate: new Date() })
+    | }});
+    |$( "#historicEnds" ).datetimepicker({ maxDate: new Date()});
     |$( "#historicTopRange").spinner({min : 0, max : 100, step : 1})
     |.on('input', function () {
     |var val = this.value,
@@ -33,7 +34,7 @@ block content
     |val = 0;
     |this.value = val > max ? max : val < min ? min : val;
     |});
-    |$( "#historicTopRange").spinner("value",100); // set the default to 100
+    |$( "#historicTopRange").spinner("value",10); // set the default to 100
     |});
 
   h2.iottext
@@ -120,7 +121,7 @@ block content
     #timeline
     #preview
   
-  script(type='text/javascript', src='js/mqttws31.js')
+  script(type='text/javascript', src='js/realtime/mqttws31.js')
   script(type='text/javascript', src='js/realtime/realtime.js')
   script(type='text/javascript', src='js/realtime/realtimeGraph.js')
   script(type='text/javascript', src='js/historian/historian.js')
