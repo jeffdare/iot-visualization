@@ -42,7 +42,8 @@ var Historian  = function () {
 
 				success: function (data, status, jq){
 
-					$('#chart').empty();
+					//clear prev graphs
+					$('#chart').empty(); 
 					$('#timeline').empty();
 					$('#legend').empty();
 					historianGraph.displayHistChart(null,data);
@@ -56,4 +57,5 @@ var Historian  = function () {
 	}
 
 	this.initialize();
+	var imageHTML = '<div class="iotdashboardtext">The selected device does not have historic events in the Internet of Things Founcation</div><br><div class="iotdashboardtext">Select a different device.</div> <img class="iotimagesMiddle" align="middle" alt="Chart" src="images/IOT_Icons_Thing02.svg">';
 };

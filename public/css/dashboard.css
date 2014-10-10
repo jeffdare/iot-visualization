@@ -78,6 +78,12 @@ body {
 	margin-top: 60px;
 	margin-left: 60px;
 }
+.iotimagesMiddle {
+	width:304px;
+	height:228px;
+	margin-top: 40px;
+	margin-left: 240px;
+}
 .logintext {
 	font-family: Arial,sans-serif;
 	color: #58595b;
@@ -121,7 +127,7 @@ body {
 	padding: 4px 3px 5px 5px;
     border-radius: 4px;
     box-shadow: inset 1px 1px 2px #ddd8dc;
-    background: url(new_arrow.png) no-repeat right #ddd;
+    background: no-repeat right #ddd;
 }
 .eventsSelect {
 	border: 1px solid #ccc;
@@ -129,7 +135,7 @@ body {
 	padding: 4px 3px 5px 5px;
     border-radius: 4px;
     box-shadow: inset 1px 1px 2px #ddd8dc;
-    background: url(new_arrow.png) no-repeat right #ddd;
+    background: no-repeat right #ddd;
 }
 .histdate {
 	margin-top: 7px;

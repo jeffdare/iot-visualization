@@ -84,3 +84,8 @@ $('#realtime').change(function() {
 $( "#historicTopRange").on( "spinchange", function( event, ui ) {
 	historian.plotHistoricGraph();
 });
+
+$( "#historicEnds" ).datetimepicker({ onChangeDateTime:function(dp,$input){
+    historian.plotHistoricGraph();
+  }
+});
