@@ -112,19 +112,21 @@ var HistorianGraph = function(){
 	   		var key = 0;	
 			
 			for (var j in data[i].evt){
-							
-				if(i===data.length-1){
-					seriesData[key]={};
-					seriesData[key].name=j;
-					seriesData[key].color = this.palette.color();
-					seriesData[key].data=[];	
-				}
+
+				if (typeof data[i].evt[j] !== 'string') {
+					if(i===data.length-1){
+						seriesData[key]={};
+						seriesData[key].name=j;
+						seriesData[key].color = this.palette.color();
+						seriesData[key].data=[];	
+					}
+					
+					seriesData[key].data[counter]={};
+					seriesData[key].data[counter].x = data[i].timestamp.$date/1000;// timestamp;
+					seriesData[key].data[counter].y = data[i].evt[j];
 				
-				seriesData[key].data[counter]={};
-				seriesData[key].data[counter].x = data[i].timestamp.$date/1000;// timestamp;
-				seriesData[key].data[counter].y = data[i].evt[j];
-			
-				key++;
+					key++;
+				}
 			}
 			
 			counter++;

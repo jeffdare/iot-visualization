@@ -21,29 +21,24 @@ var auth_routes = require('./auth');
 //else redirect to login
 router.use(function(req, res, next) {
 
+	//set this header, so that there is no browser caching when destroying the session.
+	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+	
 	//check to see if we are in Bluemix and if we are bound to IoT service		
-		if (! req.session.api_key && process.env.VCAP_SERVICES)
-		{
-			var env = JSON.parse(process.env.VCAP_SERVICES);
-			for (var svcName in env) 
-			{
-				//find the IoT Service
-				for (var i=0;i<env['user-provided'].length;i++)
-				{
-					if (env['user-provided'][i].credentials.iotCredentialsIdentifier)
-					{
-						//found an IoT service so bind api_key and api_token session variables
-						req.session.api_key=env['user-provided'][i].credentials.apiKey;
-						req.session.auth_token=env['user-provided'][i].credentials.apiToken;
-						req.session.isBluemix= true;
-						res.redirect("/dashboard");
-					}
-				}
-			}
-		
-
+	if (! req.session.api_key && process.env.VCAP_SERVICES && req.path.indexOf('login') === -1)
+	{
+		var keys = getAuthFromVCAP(process.env.VCAP_SERVICES);
+		if( keys.api_key) {
+			//found IoTF service, so set the api key and auth token
+			req.session.api_key=keys.api_key;
+			req.session.auth_token=keys.auth_token;
+			req.session.isBluemix= true;
+			res.redirect("/dashboard");
+		} else {
+			//no service found, so redirect to login page
+			res.redirect("/login");
 		}
-
+	}
 	// for api calls, send 401 code
 	else if(! req.session.api_key && req.path.indexOf('api') != -1) {
 		res.status(401).send({error: "Not authorized"});
@@ -63,5 +58,21 @@ router.use('/dashboard', dashboard_routes);
 //proxy api routes TODO: remove this after datapower handles the CORS requests
 router.use('/api/v0001',api_routes);
 
+function getAuthFromVCAP(VCAP_SERVICES) {
+
+	var env = JSON.parse(VCAP_SERVICES);
+	for (var service in env) {
+		//find the IoT Service
+		for (var i=0;i<env['user-provided'].length;i++) {
+			
+			if (env['user-provided'][i].credentials.iotCredentialsIdentifier) {
+				//found an IoT service, return api_key and api_token session variables
+				return { api_key : env['user-provided'][i].credentials.apiKey,
+						auth_token : env['user-provided'][i].credentials.apiToken }
+			}
+		}
+	}
+	return {};
+}
 
 module.exports = router;

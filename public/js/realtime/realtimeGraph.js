@@ -111,13 +111,14 @@ var RealtimeGraph = function(){
 		var maxPoints = 25; 
 		for (var j in data.d)
 		{
-
+			if (typeof data.d[j] !== 'string') {
 			this.graph.series[key].data.push({x:timestamp,y:data.d[j]});
 			if (this.graph.series[key].data.length > maxPoints)
 			{
 				this.graph.series[key].data.splice(0,1);//only display up to maxPoints
 			}
 			key++;
+		}
 		}
 		this.graph.render();	
 	}
@@ -129,7 +130,7 @@ var RealtimeGraph = function(){
 		var timestamp = Date.now()/1000;
 		for (var j in data.d)
 		{
-
+			if (typeof data.d[j] !== 'string') {
 			seriesData[key]={};
 			seriesData[key].name=j;
 			seriesData[key].color = palette.color();
@@ -139,6 +140,7 @@ var RealtimeGraph = function(){
 			seriesData[key].data[0].x = timestamp;
 			seriesData[key].data[0].y = data.d[j];
 			key++;
+		}
 		}
 
 		this.drawGraph(seriesData);
