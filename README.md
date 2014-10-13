@@ -112,7 +112,7 @@ make the REST call to get the historical data
 
 #### Realtime data: 
 
-   The components for the realtime data visualization are placed in the files historian.js and historianGraph.js in this folder.
+   The components for the realtime data visualization are placed in the files realtime.js and realtimeGraph.js in this folder.
 
         iot-visualization\public\js\realtime\
     
@@ -127,8 +127,7 @@ make the REST call to get the historical data
 
 
 
- *historian.js* : This file intializes the graph and subscribes to the mqtt topics to get realtime device data from IBM IOT cloud.
-
+ *realtime.js* : This file intializes the graph and subscribes to the mqtt topics to get realtime device data from IBM IOT cloud.
 
 
  You can download the iot-visualization project zip and use the above guidelines to customize the graphs to change the visualization.
