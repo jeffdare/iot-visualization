@@ -1,36 +1,31 @@
 IOT Visualization:
 ==================
 
->>  
+ Please refer to the [recipe] for running the application.
 
-> This is a stand alone web app written on top of [node.js] to visualize IOT data.Additionally it uses the following frameworks.
+ This is a stand alone web app written on top of [node.js] to visualize IOT data.Additionally it uses the following frameworks.
 
->> 
 
-> [express] :  Server side routing
 
-> [JQuery] :  UI and REST calls
+ [express] :  Server side routing
 
-> [Rickshaw]  : Visualisation of data
+ [JQuery] :  UI and REST calls
 
-> [MQTT paho client] : Subscribing to the IBM Internet of Things(IOT) Cloud 
+ [Rickshaw]  : Visualisation of data
+
+ [MQTT paho client] : Subscribing to the IBM Internet of Things(IOT) Cloud 
 using mqtt protocol and receiving messages from registered devices from 
 IBM IOT Cloud.
-
->> 
-
-> Please refer to the [recipe] for running the application.
 
 ### Visualization in the application: 
 
 
-> This page uses the  [Rickshaw] charting library to visualize real time and historical data.
+ This page uses the  [Rickshaw] charting library to visualize real time and historical data.
 
->> 
 
-> ####Historical data: 
+#### Historical data: 
 
->   The components for the historical data visualization are placed in the files historian.js and historianGraph.js in this folder.
+   The components for the historical data visualization are placed in the files historian.js and historianGraph.js in this folder.
 
         iot-visualization\public\js\historian\
     
@@ -39,13 +34,13 @@ IBM IOT Cloud.
         \historianGraph.js
 
 
->>  
+ 
 
-> *historianGraph.js*: This file contains the graph and it's related function.
+ *historianGraph.js*: This file contains the graph and it's related function.
 
->> 
 
-> *Change the color of the graph*: In the below section of code you can change the hexadecimal codes to change the color of the graph data.
+
+ *Change the color of the graph*: In the below section of code you can change the hexadecimal codes to change the color of the graph data.
     
         this.palette = new Rickshaw.Color.Palette( { scheme: [
           "#7f1c7d",
@@ -54,14 +49,14 @@ IBM IOT Cloud.
           "#00a6a0",
           "#ee3e96"
           ] } );
->> 
 
-> The function drawGraph(seriesData) is called from historian.js when we receive device data from IBM IOT Cloud.It instantiates the graph for the first time and set te renderer , hover details , x-axis and y-axis formatting.
+
+ The function drawGraph(seriesData) is called from historian.js when we receive device data from IBM IOT Cloud.It instantiates the graph for the first time and set te renderer , hover details , x-axis and y-axis formatting.
 
         this.drawGraph = function(seriesData) 
->> 
 
-> This instantiates the graph and set the intial renderer to line.
+
+ This instantiates the graph and set the intial renderer to line.
 
         this.graph = new Rickshaw.Graph( {
             element: document.getElementById("chart"),
@@ -73,9 +68,9 @@ IBM IOT Cloud.
           series: seriesData  
         } );
 
->> 
 
-> This defines the time fixture(e.g. year, month, day, hour) and the formatting of each) for the x-axis. 
+
+ This defines the time fixture(e.g. year, month, day, hour) and the formatting of each) for the x-axis. 
 
         this.xAxis = new Rickshaw.Graph.Axis.Time( {
           graph: this.graph,
@@ -83,9 +78,9 @@ IBM IOT Cloud.
           timeFixture: new Rickshaw.Fixtures.Time.Local()
         } );
 
->> 
 
-> This defines the number formatting for y axis.
+
+ This defines the number formatting for y axis.
 
     this.yAxis = new Rickshaw.Graph.Axis.Y( {
       graph: this.graph,
@@ -93,31 +88,31 @@ IBM IOT Cloud.
       ticksTreatment: this.ticksTreatment
     } );
 
->> 
 
-> This function gets called from historian.js and create the array which is used to plot the graph.
+
+ This function gets called from historian.js and create the array which is used to plot the graph.
 
         this.displayHistChart = function(device,data)
 
 
-> *historian.js* : This file intializes the graph and makes REST API calls to get the historian data. 
+ *historian.js* : This file intializes the graph and makes REST API calls to get the historian data. 
 
->> 
+
 
         this.initialize = function() {
         historianGraph = new HistorianGraph();
       }
->> 
 
-> The function  this.plotHistoricGraph handles the ui control selections and 
+
+ The function  this.plotHistoricGraph handles the ui control selections and 
 make the REST call to get the historical data
 
         this.plotHistoricGraph 
 
 
-> ####Realtime data: 
+#### Realtime data: 
 
->   The components for the realtime data visualization are placed in the files historian.js and historianGraph.js in this folder.
+   The components for the realtime data visualization are placed in the files realtime.js and realtimeGraph.js in this folder.
 
         iot-visualization\public\js\realtime\
     
@@ -126,17 +121,16 @@ make the REST call to get the historical data
         \realtimeGraph.js
 
 
->>  
+ 
 
-> *realtimeGraph.js*: This file contains the graph and it's related functions.This is written in the same style as historianGraph.js above.So you can follow the guidelines for historianGraph.js to customize the code.
+ *realtimeGraph.js*: This file contains the graph and it's related functions.This is written in the same style as historianGraph.js above.So you can follow the guidelines for historianGraph.js to customize the code.
 
->> 
 
-> *historian.js* : This file intializes the graph and subscribes to the mqtt topics to get realtime device data from IBM IOT cloud.
 
->> 
+ *realtime.js* : This file intializes the graph and subscribes to the mqtt topics to get realtime device data from IBM IOT cloud.
 
-> You can download the iot-visualization project zip and use the above guidelines to customize the graphs to change the visualization.
+
+ You can download the iot-visualization project zip and use the above guidelines to customize the graphs to change the visualization.
 
 [node.js]:http://nodejs.org
 [jQuery]:http://jquery.com
