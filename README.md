@@ -23,8 +23,7 @@ IBM IOT Cloud.
  This page uses the  [Rickshaw] charting library to visualize real time and historical data.
 
 
-
- ####Historical data: 
+#### Historical data: 
 
    The components for the historical data visualization are placed in the files historian.js and historianGraph.js in this folder.
 
@@ -111,7 +110,7 @@ make the REST call to get the historical data
         this.plotHistoricGraph 
 
 
- ####Realtime data: 
+#### Realtime data: 
 
    The components for the realtime data visualization are placed in the files historian.js and historianGraph.js in this folder.
 
